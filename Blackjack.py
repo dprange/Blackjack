@@ -1,5 +1,4 @@
 #Command line Blackjack
-
 import random
 import time
 
@@ -55,6 +54,7 @@ class Hand(Deck):
                 ace_counter -= 1
         return hand_total
 def display_command_bar():
+    print("_")
     print ("Type: (d)eal | (h)it | (s)tand and press enter")
         # for loop for all the hands. (split)
 deck = Deck()
@@ -62,20 +62,23 @@ display_command_bar()
 while(True):
     i = input()
     if i == "d":
-        print("Dealer Deals a new hand.")
+        print("_")
         player_hand = Hand()
         dealer_hand = Hand()
         deck.move_card(player_hand, 1)
         deck.move_card(dealer_hand, 1)
         deck.move_card(player_hand, 1)
         deck.move_card(dealer_hand, 1)
-        print('-Player has.', player_hand.total())
+        print('Player has.', player_hand.total())
         print(player_hand)
         time.sleep(.3)
-        print("-Dealer shows.")
+        print("_")
+        print("Dealer shows.")
         print(dealer_hand.cards[1])
-        if player_hand.total == 21:
+        if player_hand.total() == 21:
+            print("_")
             print("BLACKJACK!!!")
+            print("Player Wins!")
             display_command_bar()
         if dealer_hand.cards[1][0] == 'a':
             print("Dealer is showing an Ace")
@@ -83,24 +86,27 @@ while(True):
         #does player have doubles to split.
         #double down - take one card and stay.
     if i == "h":
+        print("_")
         print('---Player Hits---')
         deck.move_card(player_hand, 1)
         print(player_hand) 
-        print('-Player Has.', player_hand.total())
+        print("_")
+        print('Player Has.', player_hand.total())
         if player_hand.total() > 21:
             print("BUST!")
             display_command_bar()
     if i == 's':
-        print('-Dealer Has.', dealer_hand.total())
+        print("_")
+        print('Dealer Has.', dealer_hand.total())
         while dealer_hand.total() < 17:
             print('---Dealer Hits---')
             deck.move_card(dealer_hand, 1)
-            print('-Dealer Has.', dealer_hand.total())
+            print('Dealer Has.', dealer_hand.total())
             if dealer_hand.total() > 21:
                 print("Dealer BUST!")
-                print("Player Wins!")
-                display_command_bar()
+        print("Dealer hand")
         print(dealer_hand)
+        print("_")
         print("scores Player:",player_hand.total())
         print("scores Dealer:",dealer_hand.total())
         if (player_hand.total() > dealer_hand.total() or dealer_hand.total() > 21):
