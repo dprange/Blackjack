@@ -1,12 +1,9 @@
-# Blackjack from the command line.
+# start blackjack.py from the command line like "python3 Blackjack.py"
 
-$ python3 Blackjack.py
-
-# updates to come.
+# still working on.
 # Split
 # Double Down
 # Betting system
-# Dealer soft-hit option
+# option for Dealer soft-hit
 # option for number of desks
 # option to burn X amount of cards (feel more like walking up to table, then having a full new deck)
-# GUI
