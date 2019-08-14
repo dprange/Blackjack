@@ -1,3 +1,8 @@
+#Name: Blackjack
+#Version: v.010
+#Authour: dp
+#Date: Aug2019
+
 import sys
 import random
 import time
@@ -97,6 +102,7 @@ def update_dealer_gui(show):
 
 def deal_button_action():
     top.info_listbox.delete(0,100)
+    #top.player_listbox2.place_forget()
     info_i = 0
     update_info_gui('Dealer Deals a new hand.')
     player_hand.cards = []
@@ -142,6 +148,25 @@ def stand_button_action():
         update_info_gui("Dealer Wins!")
     sys.stdout.flush()
 
+def split_button_action():
+    pass
+    #top.player_listbox2 = tk.Listbox(top)
+    top.player_listbox2.place(relx=0.400, rely=0.549, relheight=0.324
+            , relwidth=0.352)
+    top.player_listbox2.configure(background="white")
+    top.player_listbox2.configure(font="TkFixedFont")
+    top.player_listbox2.configure(selectbackground="#c4c4c4")
+    top.player_listbox2.configure(width=124)
+    #move one card to this list.
+    #play hand one
+    #play hand two
+    #win/lose
+    #clean up
+    #time.sleep(1)
+    top.player_listbox2.place_forget()
+    top.player_listbox2 = tk.Listbox(top)
+    sys.stdout.flush()
+
 def init(top, gui, *args, **kwargs):
     global w, top_level, root
     w = gui
@@ -165,7 +190,7 @@ def vp_start_gui():
 w = None
 def create_Toplevel1(root, *args, **kwargs):
     '''Starting point when module is imported by another program.'''
-    global w, w_win, rt
+    global w, w_win, rt, top
     rt = root
     w = tk.Toplevel (root)
     top = Toplevel1 (w)
@@ -199,6 +224,8 @@ class Toplevel1:
         self.player_listbox.configure(font="TkFixedFont")
         self.player_listbox.configure(selectbackground="#c4c4c4")
         self.player_listbox.configure(width=124)
+
+        self.player_listbox2 = tk.Listbox(top)
 
         self.Label1 = tk.Label(top)
         self.Label1.place(relx=0.028, rely=0.029, height=15, width=109)
@@ -244,10 +271,11 @@ class Toplevel1:
         self.stand_button.configure(command=stand_button_action)
         self.stand_button.configure(text='''Stand''')
 
-        self.Button4 = tk.Button(top)
-        self.Button4.place(relx=0.483, rely=0.896, height=25, width=63)
-        self.Button4.configure(activebackground="#f9f9f9")
-        self.Button4.configure(text='''Split''')
+        self.split_button = tk.Button(top)
+        self.split_button.place(relx=0.483, rely=0.896, height=25, width=63)
+        self.split_button.configure(activebackground="#f9f9f9")
+        self.split_button.configure(command=split_button_action)
+        self.split_button.configure(text='''Split''')
 
         self.Button5 = tk.Button(top)
         self.Button5.place(relx=0.653, rely=0.896, height=25, width=105)
