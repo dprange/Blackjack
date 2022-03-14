@@ -1,6 +1,8 @@
 # GUI Blackjack
+make sure that tkinter is installed (used for the GUI). 'sudo apt-get install python3-tk'
 
-start blackjack.py from the command line like "python3 Blackjack.py"
+
+start blackjack.py from the command line like 'python3 Blackjack.py'
 
 -still working on.
 
